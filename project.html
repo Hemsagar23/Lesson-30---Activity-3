@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Age Validation Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="number" id="age" placeholder="Enter your age" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let age = parseInt(document.getElementById("age").value);
+            let message = document.getElementById("message");
+
+            if (name === "") {
+                message.style.color = "red";
+                message.textContent = "Please enter your name.";
+                return;
+            }
+
+            if (isNaN(age)) {
+                message.style.color = "red";
+                message.textContent = "Please enter your age.";
+                return;
+            }
+
+            if (age >= 18) {
+                message.style.color = "green";
+                message.textContent = "Welcome, " + name + "! Login successful.";
+            } else {
+                message.style.color = "red";
+                message.textContent = "Sorry " + name + ", you must be 18 or older.";
+            }
+        });
+    </script>
+</body>
+
+</html>
